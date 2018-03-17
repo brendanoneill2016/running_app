@@ -1,0 +1,48 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @event.date %>
+</p>
+
+<p>
+  <strong>Time:</strong>
+  <%= @event.time %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @event.location %>
+</p>
+
+<p>
+  <strong>Signed Up:</strong>
+  <%= @signups.count %>
+</p>
+
+
+<% names = [] %>
+
+<% if @signups.empty? %>
+	Nobody signed up :(
+<% else %>
+	<% @names.each do |loop| %>
+	<% u = User.find(loop) %>
+	<%= u.name + " " + "IS IN!" %>
+		<% if current_user == u %>
+		<%= link_to 'Undo Signup', event_signup_url(@event) , method: :delete, data: { confirm: 'Awww no, really??' } %> 
+		<% else %>
+		<p>
+		<% end %>
+	<% end %>
+<% end %>
+
+
+
+<%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'Back', events_path %>
+
+<%= link_to 'Are You IN???', new_event_signup_url(@event) %>
+
+
+

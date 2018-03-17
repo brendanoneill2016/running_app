@@ -1,0 +1,7 @@
+
+
+<form class="new_signup" id="new_signup" action="/events/8/signups" accept-charset="UTF-8" method="post"><input name="utf8" value="✓" type="hidden"><input name="authenticity_token" value="W9If3JKHvz4oc5rdPrTnmvIg8jf54K1t9KtZLARLOnBZDkwSRK7gze8PYhzevuqN7hpwuUST+xpd4zvAy2HQTA==" type="hidden"> 
+ <div><input name="signup[user_id]" id="user_id" value= <%= "#{current_user.id}" %> type="hidden"></div>
+  <div><input name="signup[event_id]" id="event_id" value= <%= "#{@event.id}" %> type="hidden"></div>
+  <input name="commit" value="Signup" data-disable-with="Signup" type="submit">
+</form>

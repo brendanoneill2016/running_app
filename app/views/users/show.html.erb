@@ -9,3 +9,35 @@
     </section>
   </aside>
 </div>
+
+<p>
+	  <table>
+	  <thead>
+	    <tr>
+	      <th>Organiser</th>
+	      <th>Date</th>
+	      <th>Time</th>
+	      <th>Location</th>
+	      <th>Signups</th>
+
+	      <th colspan="5"></th>
+	    </tr>
+	  </thead>
+
+
+</p>
+
+
+<% @user_signups.each do |loop| %>
+	<% e = Event.find(loop) %>
+	<%= e.location %>
+	<%= e.date %>
+	<%= e.time %>
+		<% if current_user %>
+		<%= link_to 'Undo Signup', event_signup_url(e.id) , method: :delete, data: { confirm: 'Awww no, really??' } %> 
+		<% else %>
+		<p>
+		<% end %>
+	<% end %>
+
+

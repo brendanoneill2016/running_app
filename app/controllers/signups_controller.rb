@@ -8,6 +8,8 @@ class SignupsController < ApplicationController
 	end
 
 
+
+
 	def new
 		@event = Event.find(params[:event_id])
 		@signup = Signup.new
@@ -16,9 +18,11 @@ class SignupsController < ApplicationController
 
 	def create
 		@signup = Signup.new(signup_params)
+
 		if @signup.save
 			flash[:success] = "You signed up for Event #{@event.id}!!"
       		redirect_to events_url
+
 		end
 	end
 

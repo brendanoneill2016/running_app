@@ -11,6 +11,22 @@
     </div>
   <% end %>
 
+
+ <div class="field">
+    <%= form.label :Title %>
+    <%= form.text_field :title, id: :event_title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :distance_in_miles %>
+    <%= form.text_field :distance, id: :event_distance %>
+  </div>
+
+   <div class="field">
+    <%= form.label :Pace_per_mile_approx %>
+    <%= form.text_field :pace, id: :event_pace %>
+  </div>
+
   <div class="field">
     <%= form.label :date_123 %>
     <%= form.date_field :date, id: :event_date %>
@@ -22,7 +38,7 @@
   </div>
 
   <div class="field">
-    <%= form.label :location %>
+    <%= form.label :Google_Maps_URL %>
     <%= form.text_field :location, id: :event_location %>
   </div>
 

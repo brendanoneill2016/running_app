@@ -19,7 +19,7 @@
       <tr>
         <td><%= event.date %></td>
         <td><%= event.time %></td>
-        <td><%= event.location %></td>
+        <td> <a href= <%= "#{event.location}" %> > <%= event.location %> </a> </td>
         <td><%= event.signups.count %></td>
 
         <td><%= link_to 'Show', event %></td>

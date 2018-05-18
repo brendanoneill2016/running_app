@@ -11,6 +11,13 @@ class UsersController < ApplicationController
 
   def show
 	  @user = User.find(params[:id])
+    @signups = Signup.where(params[:id])
+    @user_signups = []
+
+      @signups.each do |u|
+        @user_signups << u.event_id
+
+      end 
   end
   
   def new

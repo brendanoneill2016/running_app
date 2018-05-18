@@ -12,7 +12,7 @@
 
 <p>
   <strong>Location:</strong>
-  <%= @event.location %>
+  <a href= <%= "#{@event.location}" %> > <%= @event.location %> </a>
 </p>
 
 <p>
@@ -23,24 +23,39 @@
 
 <% names = [] %>
 
-<% if @signups.empty? %>
-	Nobody signed up :(
-<% else %>
-	<% @names.each do |loop| %>
-	<% u = User.find(loop) %>
-	<%= u.name + " " + "IS IN!" %>
-		<% if current_user == u %>
-		<%= link_to 'Undo Signup', event_signup_url(@event) , method: :delete, data: { confirm: 'Awww no, really??' } %> 
-		<% else %>
-		<p>
+
+
+<% if current_user.id == @event.user_id %>
+	<% if @signups.empty? %>
+		Nobody signed up :(
+	<% else %>
+		<% @names.each do |loop| %>
+		<% u = User.find(loop) %>
+		<%= u.name + " " + "IS IN!" %>
+			<% if current_user == u %>
+			<%= link_to 'Undo Signup', event_signup_url(@event) , method: :delete, data: { confirm: 'Awww no, really??' } %> 
+			<% else %>
+			<p>
+			<% end %>
 		<% end %>
 	<% end %>
+<% else %>
+	Only the event organiser can see participant names!
 <% end %>
 
+<br>
+<br>
+
+<% if current_user.id == @event.user_id %>
+	<%= link_to 'Edit', edit_event_path(@event) %> 
+<% else %>
+
+<% end %>
+<br>
 
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>
+<br>
 
 <%= link_to 'Are You IN???', new_event_signup_url(@event) %>
 

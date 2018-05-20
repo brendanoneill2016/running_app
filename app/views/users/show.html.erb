@@ -3,41 +3,37 @@
   <aside class="col-md-4">
     <section class="user_info">
       <h1>
-        <%= gravatar_for @user %>
+       <!-- <%= gravatar_for @user %> -->
         <%= @user.name %>
       </h1>
     </section>
   </aside>
 </div>
 
-<p>
-	  <table>
-	  <thead>
-	    <tr>
-	      <th>Organiser</th>
-	      <th>Date</th>
-	      <th>Time</th>
-	      <th>Location</th>
-	      <th>Signups</th>
+<br>
+<br>
+<strong> Runs you've signed up for: </strong> <br>
 
-	      <th colspan="5"></th>
-	    </tr>
-	  </thead>
+<% if @user_signups.empty? %>
+(none)
 
-
-</p>
-
-
+<% else %>
 <% @user_signups.each do |loop| %>
 	<% e = Event.find(loop) %>
 	<%= e.location %>
 	<%= e.date %>
 	<%= e.time %>
 		<% if current_user %>
-		<%= link_to 'Undo Signup', event_signup_url(e.id) , method: :delete, data: { confirm: 'Awww no, really??' } %> 
+		<strong><%= link_to 'Undo Signup', event_signup_url(e.id) , class: "btn btn-sm btn-success", method: :delete, data: { confirm: 'Awww no, really??' } %> </strong>
+
 		<% else %>
 		<p>
 		<% end %>
 	<% end %>
+<% end %>
+
+<br>
+<br>
+<%= link_to "Account Settings", edit_user_path(current_user), class: "btn btn-lg btn-primary" %></li>
 
 

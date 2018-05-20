@@ -1,16 +1,11 @@
-<div class="center jumbotron">
-  <h1>Welcome toGet!</h1>
-
-  <h2>
-    If you're looking to run, you've come to the right place!
-    Sign up and join in on any of our group runs....it's all about the banter!!
-  </h2>
-
-  <%= link_to "Sign Up Now", signup_path, class: "btn btn-lg btn-primary" %>
-</div>
 
 
-<h1>Upcoming Runs...(don't miss out!)</h1>
+
+
+
+<% if logged_in? %>
+
+<h1>Upcoming Group Runs</h1>
 
 <table>
   <thead>
@@ -32,22 +27,22 @@
     <% @event_order.each do |event| %>
       
       <% @event_organisers.each do |name| %>
-			<% u = User.find(name) %>
-			<tr>
-		<td><%=	u.name %></td>
-			<% end %>
-		<td><%= event.title %></td>
-		<td><%= event.distance %></td>
-		<td><%= event.pace %></td>
+      <% u = User.find(name) %>
+      <tr>
+    <td><%= u.name %></td>
+      <% end %>
+    <td><%= event.title %></td>
+    <td><%= event.distance %></td>
+    <td><%= event.pace %></td>
         <td><%= event.date %></td>
         <td><%= event.time %></td>
         <td> <a href=<%= "#{event.location}" %> > <%= event.location %> </a></td>
-			
+      
 
 
-        <td><%= event.signups.count %></td>
+        <td><%= event.signups.count + 1 %></td>
 
-        <td><%= link_to 'View Run', event %></td>
+        <td><%= link_to 'View Run', event, class: "btn btn-sm btn-success" %></td>
 
 
       </tr>
@@ -56,4 +51,68 @@
 </table>
 
 <br>
+
+
+
+  <div class="center jumbotron">
+
+    <h2>
+      <strong>
+      How it works:</strong> <br><br>
+</h2>
+   
+<p>
+
+
+1. Check out the list of upcoming group runs below. <br><br>
+2. Sign up by clicking on 'View Run' and following the steps.<br><br>
+3. Turn up and enjoy the run!<br><br>
+
+</p>
+
+
+
+  </div>
+
+
+
+
+
+
+
+
+<% else%>
+<div class="center jumbotron">
+  <h1>Welcome to Get Running (....today!)</h1>
+
+  <h2>
+ Sign up below to discover/join our group runs in the Dublin Docklands area. <br>
+ It's free, it's local, and it's good fun. We hope to see you there!
+
+  </h2>
+
+  <%= link_to "Sign Up Now", signup_path, class: "btn btn-lg btn-success" %>
+<br>
+OR
+<br>
+  <%= link_to "Log In", login_path, class: "btn btn-lg btn-success" %>
+</div>
+
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

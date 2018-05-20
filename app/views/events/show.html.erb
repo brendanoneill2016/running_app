@@ -17,23 +17,25 @@
 
 <p>
   <strong>Signed Up:</strong>
-  <%= @signups.count %>
+  <%= @signups.count + 1 %>
 </p>
 
 
 <% names = [] %>
 
-
+<strong> Already signed up: <br> </strong>
 
 <% if current_user.id == @event.user_id %>
 	<% if @signups.empty? %>
-		Nobody signed up :(
+		Nobody :(
+		<br><br>
 	<% else %>
+
 		<% @names.each do |loop| %>
 		<% u = User.find(loop) %>
-		<%= u.name + " " + "IS IN!" %>
+		<%= u.name %>
 			<% if current_user == u %>
-			<%= link_to 'Undo Signup', event_signup_url(@event) , method: :delete, data: { confirm: 'Awww no, really??' } %> 
+			<%= link_to "Undo Signup", event_signup_url(@event) , class: "btn btn-sm btn-success", method: :delete, data: { confirm: 'Awww no, really??' } %> 
 			<% else %>
 			<p>
 			<% end %>
@@ -54,10 +56,12 @@
 <br>
 
 
-<%= link_to 'Back', events_path %>
-<br>
+<!-- <%= link_to 'Back', events_path %> -->
 
-<%= link_to 'Are You IN???', new_event_signup_url(@event) %>
+<% if @names.include? current_user.id %>
+<% else %>
+<%= link_to 'Join This Run', new_event_signup_url(@event), class: "btn btn-lg btn-primary" %>
+<% end %>
 
 
 

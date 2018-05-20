@@ -19,9 +19,13 @@ class SignupsController < ApplicationController
 	def create
 		@signup = Signup.new(signup_params)
 
+
+		# check if user already signed up -- don't allow them to sign up twice
+
+
 		if @signup.save
-			flash[:success] = "You signed up for Event #{@event.id}!!"
-      		redirect_to events_url
+			flash[:success] = "You signed up for #{@event.title} on #{@event.date} at #{@event.time}!!"
+      		redirect_to root_url
 
 		end
 	end
@@ -39,8 +43,8 @@ class SignupsController < ApplicationController
 		signups = @event.signups
 		user_signup = signups.find_by user_id: current_user.id
 		user_signup.destroy
-		redirect_to events_url
-      	flash[:success] = "You're officially a COMPLETE lack of Banter!! :("
+		redirect_to root_url
+      	flash[:success] = "Nooooo!! Sorry you can't make this one, but hopefully we'll see you on another run soon!"
 	end
 
 private

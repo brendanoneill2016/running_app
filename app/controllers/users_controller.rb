@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
   def show
 	  @user = User.find(params[:id])
-    @signups = Signup.where(params[:id])
+    @signups = Signup.where(user_id: params[:id])
     @user_signups = []
 
       @signups.each do |u|
@@ -25,14 +25,20 @@ class UsersController < ApplicationController
   end
   
   def create
-    @user = User.new(user_params)    
-    if @user.save
-      @user.send_activation_email
-      flash[:info] = "Please check your email to activate your account."
-      redirect_to root_url
+    @user = User.new(user_params)   
 
+    if user_params[:pin] == "6892" 
+      if @user.save
+        @user.send_activation_email
+        flash[:info] = "Please check your email to activate your account."
+        redirect_to root_url
+
+      else
+        render 'new'
+      end
     else
-      render 'new'
+      flash[:danger] = "Incorrect PIN: Your account was not created"
+      redirect_to root_url
     end
   end
 
@@ -64,7 +70,7 @@ class UsersController < ApplicationController
 
     def user_params
       params.require(:user).permit(:name, :email, :password,
-                                   :password_confirmation)
+                                   :password_confirmation, :pin)
     end
 
 

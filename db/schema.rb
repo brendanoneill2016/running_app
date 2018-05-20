@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180322214007) do
+ActiveRecord::Schema.define(version: 20180520203457) do
 
   create_table "events", force: :cascade do |t|
     t.string "date"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20180322214007) do
     t.string "title"
     t.string "pace"
     t.string "distance"
+    t.string "google_maps"
     t.index ["user_id"], name: "index_events_on_user_id"
   end
 
@@ -63,6 +64,7 @@ ActiveRecord::Schema.define(version: 20180322214007) do
     t.datetime "activated_at"
     t.string "reset_digest"
     t.datetime "reset_sent_at"
+    t.string "pin"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

@@ -11,6 +11,11 @@
 </p>
 
 <p>
+  <strong>Organiser:</strong>
+  <%= @organiser.name %>
+</p>
+
+<p>
   <strong>Location:</strong>
   <a href= <%= "#{@event.location}" %> > <%= @event.location %> </a>
 </p>
@@ -21,32 +26,39 @@
 </p>
 
 
-<% names = [] %>
 
 <strong> Already signed up: <br> </strong>
-
-<% if current_user.id == @event.user_id %>
-	<% if @signups.empty? %>
-		Nobody :(
-		<br><br>
-	<% else %>
+	<%= @organiser.name %> <br>
 
 		<% @names.each do |loop| %>
 		<% u = User.find(loop) %>
 		<%= u.name %>
-			<% if current_user == u %>
-			<%= link_to "Undo Signup", event_signup_url(@event) , class: "btn btn-sm btn-success", method: :delete, data: { confirm: 'Awww no, really??' } %> 
-			<% else %>
-			<p>
-			<% end %>
+		<br>
 		<% end %>
-	<% end %>
-<% else %>
-	Only the event organiser can see participant names!
-<% end %>
+
+		<br><br>
+
+
+<% if @names.include? current_user.id %>
+			<%= link_to "Undo Your Signup", event_signup_url(@event) , class: "btn btn-sm btn-success", method: :delete, data: { confirm: 'Awww no, really??' } %> 
+			<% end %>
+			<br>
 
 <br>
 <br>
+
+
+
+
+<!-- <%= link_to 'Back', events_path %> -->
+
+<% if @organiser_id == current_user.id %>
+<% else %>
+<%= link_to 'Join This Run', new_event_signup_url(@event), class: "btn btn-lg btn-primary" %>
+<% end %>
+
+
+<%= render inline: @map_embed %>
 
 <% if current_user.id == @event.user_id %>
 	<%= link_to 'Edit', edit_event_path(@event) %> 
@@ -54,14 +66,6 @@
 
 <% end %>
 <br>
-
-
-<!-- <%= link_to 'Back', events_path %> -->
-
-<% if @names.include? current_user.id %>
-<% else %>
-<%= link_to 'Join This Run', new_event_signup_url(@event), class: "btn btn-lg btn-primary" %>
-<% end %>
 
 
 

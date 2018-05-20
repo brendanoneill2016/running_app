@@ -38,8 +38,13 @@
   </div>
 
   <div class="field">
-    <%= form.label :Google_Maps_URL %>
+    <%= form.label :meetup_location %>
     <%= form.text_field :location, id: :event_location %>
+  </div>
+
+  <div class="field">
+    <%= form.label :google_maps %>
+    <%= form.text_field :google_maps, id: :event_google_maps %>
   </div>
 
   <div class="actions">

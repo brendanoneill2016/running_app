@@ -16,12 +16,16 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    @organiser_id = @event.user_id
+    @organiser = User.find(@organiser_id)
     @signups = @event.signups
     @names = []
 
     @signups.each do |u|
       @names << u.user_id
     end
+
+    @map_embed = @event.google_maps
 
   end
 
@@ -82,6 +86,6 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:date, :time, :location, :title, :pace, :distance)
+      params.require(:event).permit(:date, :time, :location, :title, :pace, :distance, :google_maps)
     end
 end

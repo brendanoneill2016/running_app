@@ -24,7 +24,7 @@ class SignupsController < ApplicationController
 
 
 		if @signup.save
-			flash[:success] = "You signed up for #{@event.title} on #{@event.date} at #{@event.time}!!"
+			flash[:success] = "You've successfully signed up for #{@event.title}! We'll seeya there!"
       		redirect_to root_url
 
 		end

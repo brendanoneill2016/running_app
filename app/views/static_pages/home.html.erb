@@ -10,7 +10,6 @@
 <table>
   <thead>
     <tr>
-      <th>Organiser</th>
       <th>Title</th>
       <th>Distance</th>
       <th>Pace</th>
@@ -23,14 +22,10 @@
     </tr>
   </thead>
 
-  <tbody>
+ 
     <% @event_order.each do |event| %>
-      
-      <% @event_organisers.each do |name| %>
-      <% u = User.find(name) %>
-      <tr>
-    <td><%= u.name %></td>
-      <% end %>
+
+    <tr>
     <td><%= event.title %></td>
     <td><%= event.distance %></td>
     <td><%= event.pace %></td>
@@ -64,7 +59,7 @@
 <p>
 
 
-1. Check out the list of upcoming group runs below. <br><br>
+1. See above for the list of upcoming group runs. <br><br>
 2. Sign up by clicking on 'View Run' and following the steps.<br><br>
 3. Turn up and enjoy the run!<br><br>
 

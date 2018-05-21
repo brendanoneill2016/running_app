@@ -52,7 +52,7 @@
 
 <!-- <%= link_to 'Back', events_path %> -->
 
-<% if @organiser_id == current_user.id || @names.include? current_user.id %>
+<% if @organiser_id == current_user.id %>
 <% else %>
 <%= link_to 'Join This Run', new_event_signup_url(@event), class: "btn btn-lg btn-primary" %>
 <% end %>

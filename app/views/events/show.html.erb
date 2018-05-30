@@ -1,3 +1,13 @@
+<script type="text/javascript"></script>
+
+
+
+<% if logged_in? == false %>
+		<script>
+		    window.location.href="/signup" 
+		</script>
+<% else %>
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -52,10 +62,15 @@
 
 <!-- <%= link_to 'Back', events_path %> -->
 
+<div>
 <% if @organiser_id == current_user.id %>
+<% elsif @names.include? current_user.id %>
 <% else %>
 <%= link_to 'Join This Run', new_event_signup_url(@event), class: "btn btn-lg btn-primary" %>
 <% end %>
+</div>
+<br>
+<br>
 
 
 <%= render inline: @map_embed %>
@@ -67,5 +82,7 @@
 <% end %>
 <br>
 
+
+<% end %>
 
 

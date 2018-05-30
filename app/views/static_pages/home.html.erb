@@ -3,7 +3,7 @@
 
 
 
-<% if logged_in? %>
+
 
 <h1>Upcoming Group Runs</h1>
 
@@ -15,13 +15,14 @@
       <th>Pace</th>
       <th>Date</th>
       <th>Time</th>
-      <th>Location</th>
+      <th>Meetup Area</th>
       <th>Signups</th>
 
       <th colspan="8"></th>
     </tr>
   </thead>
 
+<% if logged_in? %>
  
     <% @event_order.each do |event| %>
 
@@ -31,7 +32,7 @@
     <td><%= event.pace %></td>
         <td><%= event.date %></td>
         <td><%= event.time %></td>
-        <td> <a href=<%= "#{event.location}" %> > <%= event.location %> </a></td>
+        <td><%= event.location %> </a></td>
       
 
 
@@ -44,6 +45,30 @@
     <% end %>
   </tbody>
 </table>
+
+<% else %>
+ 
+    <% @event_order.each do |event| %>
+
+    <tr>
+    <td><%= event.title %></td>
+    <td><%= event.distance %></td>
+    <td><%= event.pace %></td>
+        <td><%= event.date %></td>
+        <td><%= event.time %></td>
+        <td><%= event.location %> </a></td>
+      
+        <td><%= event.signups.count + 1 %></td>
+
+        <td><%= link_to 'View Run', signup_path, class: "btn btn-sm btn-success" %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% end %>
+
 
 <br>
 
@@ -70,30 +95,6 @@
   </div>
 
 
-
-
-
-
-
-
-<% else%>
-<div class="center jumbotron">
-  <h1>Welcome to Get Running (....today!)</h1>
-
-  <h2>
- Sign up below to discover/join our group runs in the Dublin Docklands area. <br>
- It's free, it's local, and it's good fun. We hope to see you there!
-
-  </h2>
-
-  <%= link_to "Sign Up Now", signup_path, class: "btn btn-lg btn-success" %>
-<br>
-OR
-<br>
-  <%= link_to "Log In", login_path, class: "btn btn-lg btn-success" %>
-</div>
-
-<% end %>
 
 
 

@@ -7,8 +7,11 @@
     <%= render 'shared/error_messages' %>
 
 
-      <%= f.label :name %>
+      <%= f.label :first_name %>
       <%= f.text_field :name, class: 'form-control' %>
+
+      <%= f.label :surname %>
+      <%= f.text_field :surname, class: 'form-control' %>
 
       <%= f.label :email %>
       <%= f.email_field :email, class: 'form-control' %>
@@ -24,7 +27,19 @@
 
       <%= f.submit "Create my account", class: "btn btn-primary" %>
     <% end %>
+
+
+    <br><br>
+    <p><strong>Already have an account? <%= link_to "Click here to login", login_path %></strong></p>
+
+
   </div>
+
+
+ 
+
 </div>
+
+
 
 

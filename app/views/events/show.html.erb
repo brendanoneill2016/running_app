@@ -26,7 +26,7 @@
 </p>
 
 <p>
-  <strong>Meetup Location:</strong>
+  <strong>Location:</strong>
   <a href= <%= "#{@event.location}" %> > <%= @event.location %> </a>
 </p>
 
@@ -76,6 +76,7 @@
 <br>
 
 
+<h2> We'll meet at the red pin on the map below: </h2>
 <%= render inline: @map_embed %>
 
 <% if current_user.id == @event.user_id %>

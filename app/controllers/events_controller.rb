@@ -30,8 +30,7 @@ class EventsController < ApplicationController
     @date = @event.date
     @d = @date.split('-')
     @ruby_date = Time.new(@d[0],@d[1],@d[2])
-    @day_date = @ruby_date.strftime("%A, %d/%m/%Y")
-
+    @day_date = @ruby_date.strftime("%A %B %d, %Y")
 
   end
 

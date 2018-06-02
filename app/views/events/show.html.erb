@@ -1,7 +1,6 @@
 <script type="text/javascript"></script>
 
 
-
 <% if logged_in? == false %>
 		<script>
 		    window.location.href="/signup" 
@@ -16,22 +15,32 @@
 </p>
 
 <p>
-  <strong>Meetup Time:</strong>
-  <%= @event.time %>
-</p>
-
-<p>
   <strong>Organiser:</strong>
   <%= @organiser.name %>
 </p>
 
 <p>
-  <strong>Location:</strong>
-  <a href= <%= "#{@event.location}" %> > <%= @event.location %> </a>
+  <strong>Meetup Time:</strong>
+  <%= @event.time %>
 </p>
 
 <p>
-  <strong>Signed Up:</strong>
+  <strong>Distance:</strong>
+  <%= @event.distance %>
+</p>
+
+<p>
+  <strong>Pace:</strong>
+  <%= @event.pace %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @event.location %> 
+</p>
+
+<p>
+  <strong>Number of people going:</strong>
   <%= @signups.count + 1 %>
 </p>
 
@@ -89,6 +98,7 @@
 
 <% end %>
 
+  
 
 
 

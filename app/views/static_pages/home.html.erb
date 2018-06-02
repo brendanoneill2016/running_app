@@ -26,11 +26,16 @@
  
     <% @event_order.each do |event| %>
 
+      <% date = event.date %>
+      <% d = date.split('-') %>
+      <% ruby_date = Time.new(d[0],d[1],d[2]) %>
+      <% day_date = ruby_date.strftime("%A, %d/%m/%Y") %>
+
     <tr>
     <td><%= event.title %></td>
     <td><%= event.distance %></td>
     <td><%= event.pace %></td>
-        <td><%= event.date %></td>
+        <td><%= day_date %></td>
         <td><%= event.time %></td>
         <td><%= event.location %> </a></td>
       
@@ -50,11 +55,16 @@
  
     <% @event_order.each do |event| %>
 
+      <% date = event.date %>
+      <% d = @date.split('-') %>
+      <% ruby_date = Time.new(@d[0],@d[1],@d[2]) %>
+      <% day_date = @ruby_date.strftime("%A, %d/%m/%Y") %>
+
     <tr>
     <td><%= event.title %></td>
     <td><%= event.distance %></td>
     <td><%= event.pace %></td>
-        <td><%= event.date %></td>
+        <td><%= day_date %></td>
         <td><%= event.time %></td>
         <td><%= event.location %> </a></td>
       
@@ -87,6 +97,8 @@
 1. See above for the list of upcoming group runs. <br><br>
 2. Sign up by clicking on 'View Run' and following the steps.<br><br>
 3. Turn up and enjoy the run!<br><br>
+
+Note: if you've signed up and then can't make the run for any reason, <br> try to remember to 'Undo' your signup. You can to this via your 'Profile'.
 
 </p>
 

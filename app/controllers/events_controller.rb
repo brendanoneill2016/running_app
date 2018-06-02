@@ -27,6 +27,12 @@ class EventsController < ApplicationController
 
     @map_embed = @event.google_maps
 
+    @date = @event.date
+    @d = @date.split('-')
+    @ruby_date = Time.new(@d[0],@d[1],@d[2])
+    @day_date = @ruby_date.strftime("%A, %d/%m/%Y")
+
+
   end
 
   # GET /events/new
@@ -86,6 +92,6 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:date, :time, :location, :title, :pace, :distance, :google_maps)
+      params.require(:event).permit(:date, :time, :location, :title, :pace, :distance, :google_maps, :other_info)
     end
 end

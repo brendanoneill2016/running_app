@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180526164318) do
+ActiveRecord::Schema.define(version: 20180602152748) do
 
   create_table "events", force: :cascade do |t|
     t.string "date"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20180526164318) do
     t.string "pace"
     t.string "distance"
     t.string "google_maps"
+    t.string "other_info"
     t.index ["user_id"], name: "index_events_on_user_id"
   end
 

@@ -30,7 +30,7 @@ class UsersController < ApplicationController
     if user_params[:pin] == "6892" 
       if @user.save
         @user.send_activation_email
-        flash[:info] = "Please check your email to activate your account."
+        flash[:info] = "Please check your email to activate your account. It can sometimes take a few mins for emails to be sent too, so don't panic if you don't receive it within a few seconds! :) "
         redirect_to root_url
 
       else

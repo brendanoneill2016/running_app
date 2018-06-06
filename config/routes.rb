@@ -16,6 +16,7 @@ end
   get  '/help', to: 'static_pages#help'
   get  '/about', to: 'static_pages#about'
   get  '/contact', to: 'static_pages#contact'
+  get  '/archive', to: 'static_pages#archive'
   get  '/signup',  to: 'users#new'
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'

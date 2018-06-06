@@ -1,11 +1,6 @@
+<% provide(:title, "Archive") %>
+<h1>Completed Runs</h1>
 
-
-
-
-
-
-
-<h1>Upcoming Group Runs</h1>
 
 <table>
   <thead>
@@ -25,33 +20,29 @@
 <% if logged_in? %>
  
     <% @event_order.each do |event| %>
-    <% if event.date > Time.now %>
 
-      <% date = event.date %>
-      <% d = date.split('-') %>
-      <% ruby_date = Time.new(d[0],d[1],d[2]) %>
-      <% day_date = ruby_date.strftime("%A %B %d, %Y") %>
+    	<% if event.date < Time.now %>
+	      <% date = event.date %>
+	      <% d = date.split('-') %>
+	      <% ruby_date = Time.new(d[0],d[1],d[2]) %>
+	      <% day_date = ruby_date.strftime("%A %B %d, %Y") %>
 
-    <tr>
-    <td><%= event.title %></td>
-    <td><%= event.distance %></td>
-    <td><%= event.pace %></td>
-        <td><%= day_date %></td>
-        <td><%= event.time %></td>
-        <td><%= event.location %> </a></td>
-      
+	    <tr>
+	    <td><%= event.title %></td>
+	    <td><%= event.distance %></td>
+	    <td><%= event.pace %></td>
+	        <td><%= day_date %></td>
+	        <td><%= event.time %></td>
+	        <td><%= event.location %> </a></td>
 
+	        <td><%= event.signups.count + 1 %></td>
 
-        <td><%= event.signups.count + 1 %></td>
+	        <td><%= link_to 'View Run', event, class: "btn btn-sm btn-success" %></td>
 
-        <td><%= link_to 'View Run', event, class: "btn btn-sm btn-success" %></td>
+	        <% else %>
 
-
+	        <% end %>
       </tr>
-
-      <% else %>
-
-      <% end %>
     <% end %>
   </tbody>
 </table>
@@ -83,47 +74,4 @@
 </table>
 
 <% end %>
-
-
-<br>
-
-
-
-  <div class="center jumbotron">
-
-    <h2>
-      <strong>
-      How it works:</strong> <br><br>
-</h2>
-   
-<p>
-
-
-1. See above for the list of upcoming group runs. <br><br>
-2. Sign up by clicking on 'View Run' and following the steps.<br><br>
-3. Turn up and enjoy the run!<br><br>
-
-</p>
-
-
-
-  </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

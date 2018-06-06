@@ -29,6 +29,7 @@
 	<%= e.time %>
 		<% if current_user %>
 		<strong><%= link_to 'Undo Signup', event_signup_url(e.id) , class: "btn btn-sm btn-success", method: :delete, data: { confirm: 'Awww no, really??' } %> </strong>
+		<br>
 
 		<% else %>
 		<p>

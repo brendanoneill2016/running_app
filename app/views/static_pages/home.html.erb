@@ -7,6 +7,9 @@
 
 <h1>Upcoming Group Runs</h1>
 
+
+<% if logged_in? %>
+
 <table>
   <thead>
     <tr>
@@ -22,7 +25,7 @@
     </tr>
   </thead>
 
-<% if logged_in? %>
+
  
     <% @event_order.each do |event| %>
     <% if event.date >= Date.today.to_s %>
@@ -57,6 +60,21 @@
 </table>
 
 <% else %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Distance</th>
+      <th>Pace</th>
+      <th>Date</th>
+      <th>Time</th>
+      <th>Meetup Area</th>
+      <th>Signups</th>
+
+      <th colspan="8"></th>
+    </tr>
+  </thead>
  
     <% @event_order.each do |event| %>
 
@@ -77,18 +95,18 @@
       
         <td><%= event.signups.count + 1 %></td>
 
-        <td><%= link_to 'View Run', signup_path, class: "btn btn-sm btn-success" %></td>
+        <td><%= link_to 'View Run', signup_path, class: "btn btn-sm btn-success" %></td><br>
 
       </tr>
 
-  </tbody>
-</table>
-
-
-  <% else %>
+      <% else %>
   <% end %>
 
+
 <% end %>
+
+  </tbody>
+</table>
 
 <% end %>
 <br>
